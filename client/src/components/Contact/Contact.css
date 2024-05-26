@@ -1,5 +1,5 @@
 .c-container {
-  justify-content: space-between;
+  gap: 16%;
 }
 .c-container > div {
   flex: 1;

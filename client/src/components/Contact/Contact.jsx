@@ -7,7 +7,15 @@ const Contact = () => {
   return (
     <div id="contact-us" className="c-wrapper">
       <div className="paddings innerWidth flexCenter c-container">
+
         {/* left side */}
+        <div className="flexEnd c-right">
+          <div className="image-container">
+            <img src="./contact1.avif" alt="" />
+          </div>
+        </div>
+
+        {/* right side */}
         <div className="flexColStart c-left">
           <span className="orangeText">Our Contact Us</span>
           <span className="primaryText">Easy to contact us</span>
@@ -74,13 +82,6 @@ const Contact = () => {
                 <div className="flexCenter button">Message now</div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* right side */}
-        <div className="flexEnd c-right">
-          <div className="image-container">
-            <img src="./contact.jpg" alt="" />
           </div>
         </div>
       </div>

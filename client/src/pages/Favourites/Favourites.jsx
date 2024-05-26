@@ -38,24 +38,20 @@ const Favourites = () => {
     <div className="wrapper">
       <div className="flexColCenter paddings innerWidth properties-container">
         <SearchBar filter={filter} setFilter={setFilter} />
-
         <div className="paddings flexCenter properties">
-          {
-            // data.map((card, i)=> (<PropertyCard card={card} key={i}/>))
-
-            data
-              .filter((property) => favourites.includes(property.id))
-
-              .filter(
-                (property) =>
-                  property.title.toLowerCase().includes(filter.toLowerCase()) ||
-                  property.city.toLowerCase().includes(filter.toLowerCase()) ||
-                  property.country.toLowerCase().includes(filter.toLowerCase())
-              )
-              .map((card, i) => (
-                <PropertyCard card={card} key={i} />
-              ))
-          }
+          {data
+            .filter(
+              (property) => favourites && favourites.includes(property.id)
+            ) // Check if favourites is defined before using includes
+            .filter(
+              (property) =>
+                property.title.toLowerCase().includes(filter.toLowerCase()) ||
+                property.city.toLowerCase().includes(filter.toLowerCase()) ||
+                property.country.toLowerCase().includes(filter.toLowerCase())
+            )
+            .map((card, i) => (
+              <PropertyCard card={card} key={i} />
+            ))}
         </div>
       </div>
     </div>

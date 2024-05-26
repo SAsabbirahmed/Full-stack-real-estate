@@ -101,7 +101,7 @@ export const toFav = async (id, email, token) => {
     await api.post(
       `/user/toFav/${id}`,
       {
-        email,
+        email: "ahmedsabbirsa007@gmail.com",
       },
       {
         headers: {
@@ -122,7 +122,7 @@ export const getAllFav = async (email, token) => {
     const res = await api.post(
       `/user/allFav`,
       {
-        email,
+        email: "ahmedsabbirsa007@gmail.com",
       },
       {
         headers: {
@@ -169,6 +169,7 @@ export const getAllBookings = async (email, token) => {
 export const createResidency = async (data, token) => {
   console.log(data)
   try{
+    data.userEmail = "ahmedsabbirsa007@gmail.com";
     const res = await api.post(
       `/residency/create`,
       {

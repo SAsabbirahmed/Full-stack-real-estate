@@ -12,7 +12,6 @@ const Bookings = () => {
   const {
     userDetails: { bookings },
   } = useContext(UserDetailContext);
-  
 
   if (isError) {
     return (
@@ -35,30 +34,57 @@ const Bookings = () => {
       </div>
     );
   }
+  // return (
+  //   <div className="wrapper">
+  //     <div className="flexColCenter paddings innerWidth properties-container">
+  //       <SearchBar filter={filter} setFilter={setFilter} />
+
+  //       <div className="paddings flexCenter properties">
+  //         {
+  //           // data.map((card, i)=> (<PropertyCard card={card} key={i}/>))
+
+  //           data
+  //             .filter((property) =>
+  //               bookings.map((booking) => booking.id).includes(property.id)
+  //             )
+
+  //             .filter(
+  //               (property) =>
+  //                 property.title.toLowerCase().includes(filter.toLowerCase()) ||
+  //                 property.city.toLowerCase().includes(filter.toLowerCase()) ||
+  //                 property.country.toLowerCase().includes(filter.toLowerCase())
+  //             )
+  //             .map((card, i) => (
+  //               <PropertyCard card={card} key={i} />
+  //             ))
+  //         }
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
   return (
     <div className="wrapper">
       <div className="flexColCenter paddings innerWidth properties-container">
         <SearchBar filter={filter} setFilter={setFilter} />
 
         <div className="paddings flexCenter properties">
-          {
-            // data.map((card, i)=> (<PropertyCard card={card} key={i}/>))
-
-            data
-              .filter((property) =>
+          {data
+            .filter((property) => {
+              // Ensure bookings is defined before using it
+              return (
+                bookings &&
                 bookings.map((booking) => booking.id).includes(property.id)
-              )
-
-              .filter(
-                (property) =>
-                  property.title.toLowerCase().includes(filter.toLowerCase()) ||
-                  property.city.toLowerCase().includes(filter.toLowerCase()) ||
-                  property.country.toLowerCase().includes(filter.toLowerCase())
-              )
-              .map((card, i) => (
-                <PropertyCard card={card} key={i} />
-              ))
-          }
+              );
+            })
+            .filter(
+              (property) =>
+                property.title.toLowerCase().includes(filter.toLowerCase()) ||
+                property.city.toLowerCase().includes(filter.toLowerCase()) ||
+                property.country.toLowerCase().includes(filter.toLowerCase())
+            )
+            .map((card, i) => (
+              <PropertyCard card={card} key={i} />
+            ))}
         </div>
       </div>
     </div>
